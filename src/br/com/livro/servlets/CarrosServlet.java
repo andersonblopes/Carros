@@ -27,10 +27,10 @@ public class CarrosServlet extends HttpServlet {
 		List<Carro> carros = carroService.getCarros();
 		ListaCarros lista = new ListaCarros();
 		lista.setCarros(carros);
-		
-		//Gerar o XML
-		String xml = JAXBUtil.toXML(lista);
-		//Retorna o xml no formato adequado
-		ServletUtil.writeXML(resp, xml);
+
+		// Gerar o JSON
+		String json = JAXBUtil.toJSON(lista);
+		// Retorna o json no formato adequado
+		ServletUtil.writeJSON(resp, json);
 	}
 }
