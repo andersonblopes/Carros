@@ -14,6 +14,7 @@ import com.google.gson.GsonBuilder;
 
 import br.com.livro.domain.Carro;
 import br.com.livro.domain.CarroService;
+import br.com.livro.domain.Response;
 import br.com.livro.util.RegexUtil;
 import br.com.livro.util.ServletUtil;
 
@@ -72,6 +73,21 @@ public class CarrosServlet extends HttpServlet {
 		c.setLongitude(request.getParameter("longitude"));
 		c.setTipo(request.getParameter("tipo"));
 		return c;
+	}
+
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String requestUrl = req.getRequestURI();
+		Long id = RegexUtil.matchId(requestUrl);
+		if (id != null) {
+			carroService.delete(id);
+			Response r = Response.OK("Carro excluído com sucesso!");
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+			String json = gson.toJson(r);
+			ServletUtil.writeJSON(resp, json);
+		} else {
+			resp.sendError(404, "URL inválida!");
+		}
 	}
 
 }

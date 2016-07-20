@@ -12,6 +12,7 @@ import org.codehaus.jettison.mapped.MappedXMLStreamWriter;
 
 import br.com.livro.domain.Carro;
 import br.com.livro.domain.ListaCarros;
+import br.com.livro.domain.Response;
 
 public class JAXBUtil {
 
@@ -24,7 +25,7 @@ public class JAXBUtil {
 
 	static {
 		try {
-			context = JAXBContext.newInstance(ListaCarros.class, Carro.class);
+			context = JAXBContext.newInstance(Response.class, ListaCarros.class, Carro.class);
 		} catch (JAXBException e) {
 			throw new RuntimeException(e);
 		}
