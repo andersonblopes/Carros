@@ -7,6 +7,12 @@
 <title>Carros - início</title>
 </head>
 <body>
-	Olá Tomcat!
+		<form method="post" action="<%=request.getContextPath()%>/hello">
+		Nome: <input type="text" name="nome" /> 
+		<br /> <br /> 
+		SobreNome: <input type="text" name="sobrenome" /> 
+		<br /> 
+		<input type="submit" name="Enviar" />
+	</form>
 </body>
 </html>
