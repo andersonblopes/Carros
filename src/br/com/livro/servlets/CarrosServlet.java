@@ -81,7 +81,7 @@ public class CarrosServlet extends HttpServlet {
 		Long id = RegexUtil.matchId(requestUrl);
 		if (id != null) {
 			carroService.delete(id);
-			Response r = Response.OK("Carro excluído com sucesso!");
+			Response r = Response.Ok("Carro excluído com sucesso!");
 			Gson gson = new GsonBuilder().setPrettyPrinting().create();
 			String json = gson.toJson(r);
 			ServletUtil.writeJSON(resp, json);

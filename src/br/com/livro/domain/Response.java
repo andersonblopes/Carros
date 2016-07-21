@@ -12,7 +12,7 @@ public class Response {
 
 	}
 
-	public static Response OK(String string) {
+	public static Response Ok(String string) {
 		Response r = new Response();
 		r.setStatus("Ok");
 		r.setMsg(string);
